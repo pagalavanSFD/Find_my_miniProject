@@ -27,6 +27,10 @@ JavaScript for the logic
 
 CSS for styling
 
+![image](https://github.com/user-attachments/assets/dd229c8a-5be9-4298-825f-e705124f24c0)
+![image](https://github.com/user-attachments/assets/2f976b7c-3412-49a9-ba33-2582d051dd77)
+
+
 License
 This project is open-source and available under the MIT License.
 
@@ -41,3 +45,5 @@ Once you’ve created and saved the `README.md` file in your project, you need t
 1. Add the `README.md` to Git:
    ```bash
    git add README.md
+
+   
