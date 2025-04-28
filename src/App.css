@@ -76,3 +76,32 @@ ul li {
   background-color: #e0e0e0;
   font-weight: bold;
 }
+
+.project-detail {
+  background-color: #f4f4f4;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.project-detail h3 {
+  margin-bottom: 15px;
+}
+
+.project-detail p {
+  margin: 10px 0;
+}
+
+.project-detail button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.project-detail button:hover {
+  background-color: #0056b3;
+}
