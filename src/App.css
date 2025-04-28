@@ -70,3 +70,9 @@ ul li {
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   font-weight: 500;
 }
+
+/* Add this to your CSS */
+.selected {
+  background-color: #e0e0e0;
+  font-weight: bold;
+}
