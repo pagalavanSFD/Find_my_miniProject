@@ -1,4 +1,4 @@
-const projectIdeas = [
+export const projectIdeas = [
     // 1-5 Python Projects
     {
       skill: "Python",
