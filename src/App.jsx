@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "../src/App.css";
 import { projectIdeas } from './data/projectIdeas';
 
@@ -14,6 +14,14 @@ const App = () => {
   const [timeout, setTimeOut] = useState(); // Used for simulating delay/loading effect
   const [savedProjects, setSavedProjects] = useState([]); // Store saved projects for later
   const [isSavedModalOpen, setIsSavedModalOpen] = useState(false); // Control modal visibility
+  const [hasSearched, setHasSearched] = useState(false);
+
+  useEffect(() => {
+    const storedProjects = localStorage.getItem("savedProjects");
+    if (storedProjects) {
+      setSavedProjects(JSON.parse(storedProjects));
+    }
+  }, []);
 
   // Close project detail view with a short delay
   const closeProjectDetail = () => {
@@ -26,16 +34,25 @@ const App = () => {
   const handleSaveProject = (project) => {
     if (!savedProjects.includes(project)) {
       setSavedProjects([...savedProjects, project]);
+      localStorage.setItem("savedProjects", JSON.stringify(updated));
       alert("Project saved for later!");
     } else {
       alert("Project already saved!");
     }
     console.log('Saved Projects:', savedProjects);
   };
+  // Delete a project from Saved Project
+  const handleRemoveProject = (ideaToRemove) => {
+    const updated = savedProjects.filter(p => p.idea !== ideaToRemove);
+    setSavedProjects(updated);
+    localStorage.setItem("savedProjects", JSON.stringify(updated));
+  };
+  
 
   // Main function to find matching project ideas
   const handleFindProjects = () => {
     setLoading(true);
+    setHasSearched(true);
     console.log("Selected Skill:", skill);
     console.log("Selected Interest:", interest);
 
@@ -158,6 +175,25 @@ const App = () => {
               View Saved Projects ({savedProjects.length})
             </button>
           )}
+           {savedProjects.length > 0 && (
+          <button
+            onClick={() => {
+              setSavedProjects([]);
+              localStorage.removeItem("savedProjects");
+            }}
+            style={{
+              marginTop: '10px',
+              backgroundColor: '#607d8b',
+              color: '#fff',
+              padding: '8px 20px',
+              border: 'none',
+              borderRadius: '6px',
+              cursor: 'pointer'
+            }}
+          >
+            Clear All Saved
+          </button>
+           )}
         </div>
 
         {/* Displaying suggested projects */}
@@ -185,6 +221,7 @@ const App = () => {
                     style={{
                       marginTop: '8px',
                       backgroundColor: '#ff9800',
+                      listStyle:'none',
                       color: '#fff',
                       border: 'none',
                       padding: '5px 10px',
@@ -227,9 +264,12 @@ const App = () => {
               )}
             </ul>
           ) : (
-            <p style={{ marginTop: "20px", color: "red", fontWeight: "bold" }}>
+            !loading && hasSearched&& (
+
+              <p style={{ marginTop: "20px", color: "red", fontWeight: "bold" }}>
               😔 No matching projects found. Try selecting a different skill or interest!
             </p>
+            )
           )}
 
           {/* Pagination UI */}
@@ -285,6 +325,7 @@ const App = () => {
                   <li key={index} style={{
                     backgroundColor: '#e0f7fa',
                     marginBottom: '12px',
+                    listStyle:'none',
                     padding: '12px 20px',
                     borderRadius: '8px',
                     fontWeight: '500',
@@ -295,6 +336,28 @@ const App = () => {
                     <span>Difficulty: {project.difficulty}</span><br />
                     <span>Time Estimate: {project.timeEstimate}</span><br />
                     <span>Tags: {project.tags.join(", ")}</span>
+                    <ul>
+  {savedProjects.map((project, index) => (
+    <li key={index}>
+      <strong>{project.idea}</strong> - {project.skills}
+      <button
+        onClick={() => handleRemoveProject(project.idea)}
+        style={{
+          marginLeft: '10px',
+          backgroundColor: '#f44336',
+          color: '#fff',
+          border: 'none',
+          padding: '4px 8px',
+          borderRadius: '4px',
+          cursor: 'pointer'
+        }}
+      >
+        Remove
+      </button>
+    </li>
+  ))}
+</ul>
+
                   </li>
                 ))}
               </ul>
