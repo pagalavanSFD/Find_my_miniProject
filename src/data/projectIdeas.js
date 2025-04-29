@@ -335,7 +335,7 @@ export const projectIdeas = [
       tags: ["Mobile Apps", "Kotlin", "Android", "Weather"]
     },
   
-    // 41-45 Swift Projects
+    // 41-49 Swift Projects
     {
       skill: "Swift",
       interest: "Mobile Apps",
@@ -376,8 +376,40 @@ export const projectIdeas = [
       timeEstimate: "1-2 days",
       tags: ["Mobile Apps", "Swift", "iOS"]
     },
+    {
+      skill: "Swift",
+      interest: "Mobile Apps",
+      idea: "Build a Weather App using SwiftUI and OpenWeatherMap API",
+      difficulty: "Intermediate",
+      timeEstimate: "2-3 days",
+      tags: ["Mobile Apps", "Swift", "iOS", "Weather"]
+    },
+    {
+      skill: "Swift",
+      interest: "Mobile Apps",
+      idea: "Develop a Habit Tracker App for iOS",
+      difficulty: "Intermediate",
+      timeEstimate: "3-4 days",
+      tags: ["Mobile Apps", "Swift", "iOS", "Tracking"]
+    },
+    {
+      skill: "Swift",
+      interest: "Mobile Apps",
+      idea: "Create a Personal Finance Tracker App",
+      difficulty: "Intermediate",
+      timeEstimate: "3-5 days",
+      tags: ["Mobile Apps", "Swift", "iOS", "Finance"]
+    },
+    {
+      skill: "Swift",
+      interest: "Mobile Apps",
+      idea: "Build a Recipe App with a Search Feature",
+      difficulty: "Intermediate",
+      timeEstimate: "2-4 days",
+      tags: ["Mobile Apps", "Swift", "iOS", "Recipe"]
+    },
   
-    // 46-50 JavaScript/Node.js Projects
+    // 50-55 JavaScript/Node.js Projects
     {
       skill: "JavaScript/Node.js",
       interest: "Backend",
